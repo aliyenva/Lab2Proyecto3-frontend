@@ -1,5 +1,6 @@
-package com.cenfotec.crud;
+package com.cenfotec.crud.repository;
 
+import com.cenfotec.crud.model.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

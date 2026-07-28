@@ -1,5 +1,6 @@
-package com.cenfotec.crud;
+package com.cenfotec.crud.security;
 
+import com.cenfotec.crud.service.CustomUserDetailsService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

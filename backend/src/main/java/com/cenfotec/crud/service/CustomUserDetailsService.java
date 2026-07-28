@@ -1,5 +1,7 @@
-package com.cenfotec.crud;
+package com.cenfotec.crud.service;
 
+import com.cenfotec.crud.model.User;
+import com.cenfotec.crud.repository.UserRepository;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

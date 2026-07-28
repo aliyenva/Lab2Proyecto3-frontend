@@ -1,5 +1,9 @@
-package com.cenfotec.crud;
+package com.cenfotec.crud.config;
 
+import com.cenfotec.crud.model.Role;
+import com.cenfotec.crud.model.User;
+import com.cenfotec.crud.repository.RoleRepository;
+import com.cenfotec.crud.repository.UserRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;

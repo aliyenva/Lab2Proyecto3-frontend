@@ -1,5 +1,9 @@
-package com.cenfotec.crud;
+package com.cenfotec.crud.service;
 
+import com.cenfotec.crud.model.Categoria;
+import com.cenfotec.crud.model.Producto;
+import com.cenfotec.crud.repository.CategoriaRepository;
+import com.cenfotec.crud.repository.ProductoRepository;
 import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Service;
 

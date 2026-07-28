@@ -1,5 +1,12 @@
-package com.cenfotec.crud;
+package com.cenfotec.crud.controller;
 
+import com.cenfotec.crud.model.Role;
+import com.cenfotec.crud.model.User;
+import com.cenfotec.crud.repository.RoleRepository;
+import com.cenfotec.crud.repository.UserRepository;
+import com.cenfotec.crud.security.JwtUtil;
+import com.cenfotec.crud.security.LoginRequest;
+import com.cenfotec.crud.service.CustomUserDetailsService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;

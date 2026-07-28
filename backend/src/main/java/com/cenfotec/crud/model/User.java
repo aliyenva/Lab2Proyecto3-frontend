@@ -1,4 +1,4 @@
-package com.cenfotec.crud;
+package com.cenfotec.crud.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

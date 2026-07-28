@@ -1,5 +1,6 @@
-package com.cenfotec.crud;
+package com.cenfotec.crud.dto;
 
+import com.cenfotec.crud.model.User;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

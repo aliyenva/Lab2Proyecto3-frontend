@@ -1,5 +1,7 @@
-package com.cenfotec.crud;
+package com.cenfotec.crud.controller;
 
+import com.cenfotec.crud.dto.UserResponse;
+import com.cenfotec.crud.repository.UserRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

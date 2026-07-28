@@ -1,5 +1,7 @@
-package com.cenfotec.crud;
+package com.cenfotec.crud.controller;
 
+import com.cenfotec.crud.model.Producto;
+import com.cenfotec.crud.service.ProductoService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.lang.NonNull;
