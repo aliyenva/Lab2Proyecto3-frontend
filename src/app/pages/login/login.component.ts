@@ -272,9 +272,7 @@ export class LoginComponent {
   }
 
   onSubmit(): void {
-    console.log('onSubmit called');
     if (this.isSubmitDisabled()) {
-      console.log('Submit is disabled, returning');
       return;
     }
 
