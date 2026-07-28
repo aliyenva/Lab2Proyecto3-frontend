@@ -11,10 +11,14 @@ import { AuthService } from '../../services/auth.service';
   template: `
     <div class="register-container">
       <div class="register-card">
-        <h1>Register</h1>
+        <div class="register-header">
+          <span class="header-emoji">✨</span>
+          <h1>Join Us!</h1>
+          <p class="subtitle">Create your konbini account</p>
+        </div>
 
         <div class="success-message" *ngIf="successMessage">
-          {{ successMessage }}
+          ✅ {{ successMessage }}
         </div>
 
         <div class="error-message" *ngIf="errorMessage">
@@ -50,12 +54,12 @@ import { AuthService } from '../../services/auth.service';
             [disabled]="isSubmitDisabled()"
           >
             <span *ngIf="loading" class="loading-indicator">Registering...</span>
-            <span *ngIf="!loading">Register</span>
+            <span *ngIf="!loading">Register 🌟</span>
           </button>
         </form>
 
         <p class="login-link">
-          Already have an account? <a routerLink="/login">Login here</a>
+          Already have an account? <a routerLink="/login">Login here 🌸</a>
         </p>
       </div>
     </div>
@@ -67,88 +71,130 @@ import { AuthService } from '../../services/auth.service';
       align-items: center;
       min-height: 100vh;
       padding: 1rem;
-      background-color: #f5f5f5;
+      position: relative;
+      z-index: 1;
     }
 
     .register-card {
-      background: white;
-      border-radius: 8px;
-      padding: 2rem;
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(10px);
+      border: 2px solid rgba(232, 213, 245, 0.4);
+      border-radius: 20px;
+      padding: 2.5rem;
       width: 100%;
-      max-width: 400px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      max-width: 420px;
+      box-shadow: 0 8px 32px rgba(232, 213, 245, 0.25), 0 2px 8px rgba(255, 183, 197, 0.15);
+    }
+
+    .register-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .header-emoji {
+      font-size: 2.5rem;
+      display: block;
+      margin-bottom: 0.5rem;
     }
 
     h1 {
-      margin: 0 0 1.5rem 0;
+      margin: 0;
       text-align: center;
-      color: #333;
+      color: #6b4a7a;
+      font-weight: 800;
+      font-size: 1.6rem;
+    }
+
+    .subtitle {
+      color: #9b8aa8;
+      font-size: 0.9rem;
+      margin-top: 0.25rem;
     }
 
     .form-field {
-      margin-bottom: 1rem;
+      margin-bottom: 1.25rem;
     }
 
     .form-field label {
       display: block;
-      margin-bottom: 0.25rem;
-      font-weight: 500;
-      color: #555;
+      margin-bottom: 0.4rem;
+      font-weight: 600;
+      color: #6b4a7a;
+      font-size: 0.9rem;
     }
 
     .form-field input {
       width: 100%;
-      padding: 0.5rem 0.75rem;
-      border: 1px solid #ddd;
-      border-radius: 4px;
+      padding: 0.7rem 1rem;
+      border: 2px solid #E8D5F5;
+      border-radius: 12px;
       font-size: 1rem;
-      transition: border-color 0.2s;
+      font-family: 'Nunito', sans-serif;
+      transition: all 0.25s ease;
+      background: #FFFEF2;
+      color: #5a4a6b;
+      box-sizing: border-box;
     }
 
     .form-field input:focus {
       outline: none;
-      border-color: #4a90d9;
-      box-shadow: 0 0 0 2px rgba(74, 144, 217, 0.2);
+      border-color: #FFB7C5;
+      box-shadow: 0 0 0 3px rgba(255, 183, 197, 0.2);
+      background: #fff;
+    }
+
+    .form-field input::placeholder {
+      color: #c4b5d0;
     }
 
     .submit-btn {
       width: 100%;
-      padding: 0.75rem;
-      background-color: #4a90d9;
-      color: white;
+      padding: 0.8rem;
+      background: linear-gradient(135deg, #E8D5F5 0%, #FFB7C5 100%);
+      color: #5a4a6b;
       border: none;
-      border-radius: 4px;
+      border-radius: 14px;
       font-size: 1rem;
+      font-weight: 700;
+      font-family: 'Nunito', sans-serif;
       cursor: pointer;
       margin-top: 0.5rem;
-      transition: background-color 0.2s;
+      transition: all 0.25s ease;
+      box-shadow: 0 4px 15px rgba(232, 213, 245, 0.3);
     }
 
     .submit-btn:hover:not(:disabled) {
-      background-color: #357abd;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(232, 213, 245, 0.4);
     }
 
     .submit-btn:disabled {
-      background-color: #a0c4e8;
+      background: linear-gradient(135deg, #e8e0f0 0%, #f0e0e8 100%);
       cursor: not-allowed;
+      box-shadow: none;
+      color: #b0a0b8;
     }
 
     .error-message {
-      background-color: #fdecea;
-      color: #b71c1c;
-      padding: 0.75rem;
-      border-radius: 4px;
+      background-color: #FFF0F5;
+      color: #d4708a;
+      border: 1px solid #FFB7C5;
+      padding: 0.75rem 1rem;
+      border-radius: 12px;
       margin-bottom: 1rem;
       font-size: 0.875rem;
+      font-weight: 500;
     }
 
     .success-message {
-      background-color: #e8f5e9;
-      color: #2e7d32;
-      padding: 0.75rem;
-      border-radius: 4px;
+      background-color: #e8faf0;
+      color: #4a8a6a;
+      border: 1px solid #B5EAD7;
+      padding: 0.75rem 1rem;
+      border-radius: 12px;
       margin-bottom: 1rem;
       font-size: 0.875rem;
+      font-weight: 500;
     }
 
     .loading-indicator {
@@ -159,18 +205,19 @@ import { AuthService } from '../../services/auth.service';
 
     .login-link {
       text-align: center;
-      margin-top: 1rem;
-      font-size: 0.875rem;
-      color: #666;
+      margin-top: 1.5rem;
+      font-size: 0.9rem;
+      color: #9b8aa8;
     }
 
     .login-link a {
-      color: #4a90d9;
+      color: #e88ca5;
       text-decoration: none;
+      font-weight: 600;
     }
 
     .login-link a:hover {
-      text-decoration: underline;
+      color: #d4708a;
     }
   `]
 })

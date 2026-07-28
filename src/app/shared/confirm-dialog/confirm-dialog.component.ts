@@ -8,6 +8,7 @@ import { CommonModule } from '@angular/common';
   template: `
     <div class="confirm-dialog-overlay" *ngIf="visible" (click)="onCancel()">
       <div class="confirm-dialog" (click)="$event.stopPropagation()">
+        <div class="confirm-icon">🗑️</div>
         <p class="confirm-dialog-message">
           Are you sure you want to delete <strong>{{ entityName }}</strong>?
         </p>
@@ -25,7 +26,8 @@ import { CommonModule } from '@angular/common';
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.5);
+      background: rgba(107, 74, 122, 0.3);
+      backdrop-filter: blur(4px);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -33,51 +35,68 @@ import { CommonModule } from '@angular/common';
     }
 
     .confirm-dialog {
-      background: #fff;
-      border-radius: 8px;
-      padding: 24px;
+      background: rgba(255, 255, 255, 0.97);
+      border-radius: 20px;
+      padding: 2rem;
       max-width: 400px;
       width: 90%;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 8px 32px rgba(255, 183, 197, 0.25), 0 2px 8px rgba(232, 213, 245, 0.15);
+      border: 2px solid rgba(255, 183, 197, 0.3);
+      text-align: center;
+    }
+
+    .confirm-icon {
+      font-size: 2.5rem;
+      margin-bottom: 0.75rem;
     }
 
     .confirm-dialog-message {
-      margin: 0 0 20px;
-      font-size: 16px;
-      color: #333;
+      margin: 0 0 1.5rem;
+      font-size: 1rem;
+      color: #5a4a6b;
+      font-weight: 500;
+    }
+
+    .confirm-dialog-message strong {
+      color: #6b4a7a;
     }
 
     .confirm-dialog-actions {
       display: flex;
-      justify-content: flex-end;
+      justify-content: center;
       gap: 12px;
     }
 
     .btn {
-      padding: 8px 16px;
+      padding: 0.6rem 1.5rem;
       border: none;
-      border-radius: 4px;
+      border-radius: 12px;
       cursor: pointer;
-      font-size: 14px;
-      font-weight: 500;
+      font-size: 0.9rem;
+      font-weight: 600;
+      font-family: 'Nunito', sans-serif;
+      transition: all 0.25s ease;
     }
 
     .btn-cancel {
-      background: #e0e0e0;
-      color: #333;
+      background: rgba(232, 213, 245, 0.4);
+      color: #6b4a7a;
+      border: 2px solid #E8D5F5;
     }
 
     .btn-cancel:hover {
-      background: #d0d0d0;
+      background: rgba(232, 213, 245, 0.6);
     }
 
     .btn-confirm {
-      background: #dc3545;
-      color: #fff;
+      background: linear-gradient(135deg, #FFB7C5 0%, #ff9aad 100%);
+      color: #6b3a4a;
+      box-shadow: 0 3px 10px rgba(255, 183, 197, 0.3);
     }
 
     .btn-confirm:hover {
-      background: #c82333;
+      transform: translateY(-1px);
+      box-shadow: 0 5px 15px rgba(255, 183, 197, 0.4);
     }
   `]
 })

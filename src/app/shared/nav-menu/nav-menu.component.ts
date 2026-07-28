@@ -10,34 +10,50 @@ import { AuthService } from '../../services/auth.service';
   imports: [CommonModule, RouterLink],
   template: `
     <nav *ngIf="authService.isAuthenticated()" class="nav-menu">
-      <a routerLink="/products" class="nav-link">Products</a>
-      <a routerLink="/categories" class="nav-link">Categories</a>
-      <a *ngIf="authService.hasRole('SUPER-ADMIN-ROLE')" routerLink="/users" class="nav-link">Users</a>
+      <span class="nav-brand">🍙 Konbini</span>
+      <a routerLink="/products" class="nav-link">🍱 Products</a>
+      <a routerLink="/categories" class="nav-link">🏷️ Categories</a>
+      <a *ngIf="authService.hasRole('SUPER-ADMIN-ROLE')" routerLink="/users" class="nav-link">👥 Users</a>
       <span class="nav-spacer"></span>
-      <span class="nav-username">{{ authService.getUsername() }}</span>
-      <button (click)="logout()" class="nav-logout-btn">Logout</button>
+      <span class="nav-username">🌸 {{ authService.getUsername() }}</span>
+      <button (click)="logout()" class="nav-logout-btn">Logout 👋</button>
     </nav>
   `,
   styles: [`
     .nav-menu {
       display: flex;
       align-items: center;
-      gap: 1rem;
-      padding: 0.75rem 1.5rem;
-      background-color: #1976d2;
-      color: white;
+      gap: 0.75rem;
+      padding: 0.85rem 1.5rem;
+      background: linear-gradient(135deg, #FFB7C5 0%, #E8D5F5 100%);
+      color: #5a4a6b;
+      box-shadow: 0 4px 15px rgba(255, 183, 197, 0.3);
+      position: relative;
+      z-index: 100;
+    }
+
+    .nav-brand {
+      font-weight: 800;
+      font-size: 1.2rem;
+      margin-right: 1rem;
+      color: #6b4a7a;
     }
 
     .nav-link {
-      color: white;
+      color: #5a4a6b;
       text-decoration: none;
-      padding: 0.5rem 0.75rem;
-      border-radius: 4px;
-      transition: background-color 0.2s;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: all 0.25s ease;
+      background: rgba(255, 255, 255, 0.3);
     }
 
     .nav-link:hover {
-      background-color: rgba(255, 255, 255, 0.15);
+      background: rgba(255, 255, 255, 0.7);
+      transform: translateY(-1px);
+      box-shadow: 0 3px 8px rgba(255, 183, 197, 0.3);
     }
 
     .nav-spacer {
@@ -46,22 +62,27 @@ import { AuthService } from '../../services/auth.service';
 
     .nav-username {
       font-size: 0.9rem;
-      opacity: 0.9;
+      font-weight: 600;
+      color: #6b4a7a;
     }
 
     .nav-logout-btn {
-      background: transparent;
-      border: 1px solid rgba(255, 255, 255, 0.7);
-      color: white;
-      padding: 0.4rem 0.75rem;
-      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.5);
+      border: 2px solid rgba(255, 255, 255, 0.7);
+      color: #6b4a7a;
+      padding: 0.45rem 1rem;
+      border-radius: 20px;
       cursor: pointer;
-      font-size: 0.9rem;
-      transition: background-color 0.2s;
+      font-size: 0.85rem;
+      font-weight: 600;
+      font-family: 'Nunito', sans-serif;
+      transition: all 0.25s ease;
     }
 
     .nav-logout-btn:hover {
-      background-color: rgba(255, 255, 255, 0.15);
+      background: rgba(255, 255, 255, 0.85);
+      transform: translateY(-1px);
+      box-shadow: 0 3px 8px rgba(255, 183, 197, 0.3);
     }
   `]
 })

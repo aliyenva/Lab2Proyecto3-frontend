@@ -14,6 +14,7 @@ import { NotificationService } from '../../services/notification.service';
           [ngClass]="'notification-' + notification.type"
           role="alert"
         >
+          <span class="notification-icon">{{ notification.type === 'success' ? '✅' : '❌' }}</span>
           <span class="notification-message">{{ notification.message }}</span>
           <button
             class="notification-close"
@@ -34,7 +35,7 @@ import { NotificationService } from '../../services/notification.service';
       z-index: 9999;
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 10px;
       max-width: 400px;
     }
 
@@ -42,40 +43,48 @@ import { NotificationService } from '../../services/notification.service';
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 12px 16px;
-      border-radius: 6px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      padding: 14px 18px;
+      border-radius: 14px;
+      box-shadow: 0 4px 16px rgba(232, 213, 245, 0.3);
       animation: slideIn 0.3s ease-out;
-      min-width: 280px;
+      min-width: 300px;
+      font-family: 'Nunito', sans-serif;
+      font-weight: 600;
+    }
+
+    .notification-icon {
+      font-size: 1.1rem;
+      margin-right: 8px;
     }
 
     .notification-success {
-      background-color: #d4edda;
-      border: 1px solid #c3e6cb;
-      color: #155724;
+      background: linear-gradient(135deg, #e8faf0 0%, #d4f5e5 100%);
+      border: 2px solid #B5EAD7;
+      color: #3a6b55;
     }
 
     .notification-error {
-      background-color: #f8d7da;
-      border: 1px solid #f5c6cb;
-      color: #721c24;
+      background: linear-gradient(135deg, #FFF0F5 0%, #ffe8ed 100%);
+      border: 2px solid #FFB7C5;
+      color: #6b3a4a;
     }
 
     .notification-message {
       flex: 1;
       margin-right: 12px;
-      font-size: 14px;
+      font-size: 0.9rem;
     }
 
     .notification-close {
       background: none;
       border: none;
-      font-size: 20px;
+      font-size: 1.3rem;
       cursor: pointer;
       color: inherit;
       padding: 0 4px;
       line-height: 1;
-      opacity: 0.7;
+      opacity: 0.6;
+      transition: opacity 0.2s ease;
     }
 
     .notification-close:hover {

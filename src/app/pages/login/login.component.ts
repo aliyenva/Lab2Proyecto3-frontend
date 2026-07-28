@@ -12,7 +12,11 @@ import { HttpErrorResponse } from '@angular/common/http';
   template: `
     <div class="login-container">
       <div class="login-card">
-        <h2>Login</h2>
+        <div class="login-header">
+          <span class="header-emoji">🌸</span>
+          <h2>Welcome Back!</h2>
+          <p class="subtitle">Sign in to your konbini</p>
+        </div>
 
         <form (ngSubmit)="onSubmit()">
           <div class="form-group">
@@ -29,14 +33,19 @@ import { HttpErrorResponse } from '@angular/common/http';
 
           <div class="form-group">
             <label for="password">Password</label>
-            <input
-              id="password"
-              type="password"
-              [formControl]="password"
-              [maxLength]="100"
-              placeholder="Enter password"
-              autocomplete="current-password"
-            />
+            <div class="password-wrapper">
+              <input
+                id="password"
+                [type]="showPassword ? 'text' : 'password'"
+                [formControl]="password"
+                [maxLength]="100"
+                placeholder="Enter password"
+                autocomplete="current-password"
+              />
+              <button type="button" class="toggle-password" (click)="showPassword = !showPassword">
+                {{ showPassword ? '🙈' : '👁️' }}
+              </button>
+            </div>
           </div>
 
           @if (errorMessage) {
@@ -46,7 +55,8 @@ import { HttpErrorResponse } from '@angular/common/http';
           }
 
           <button
-            type="submit"
+            type="button"
+            (click)="onSubmit()"
             [disabled]="isSubmitDisabled()"
             class="submit-btn"
           >
@@ -54,13 +64,13 @@ import { HttpErrorResponse } from '@angular/common/http';
               <span class="spinner" aria-hidden="true"></span>
               Logging in...
             } @else {
-              Login
+              Login 🍙
             }
           </button>
         </form>
 
         <p class="register-link">
-          Don't have an account? <a routerLink="/register">Register here</a>
+          Don't have an account? <a routerLink="/register">Register here ✨</a>
         </p>
       </div>
     </div>
@@ -72,79 +82,143 @@ import { HttpErrorResponse } from '@angular/common/http';
       align-items: center;
       min-height: 100vh;
       padding: 1rem;
+      position: relative;
+      z-index: 1;
     }
 
     .login-card {
       width: 100%;
-      max-width: 400px;
-      padding: 2rem;
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      max-width: 420px;
+      padding: 2.5rem;
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(10px);
+      border: 2px solid rgba(255, 183, 197, 0.3);
+      border-radius: 20px;
+      box-shadow: 0 8px 32px rgba(255, 183, 197, 0.2), 0 2px 8px rgba(232, 213, 245, 0.15);
+    }
+
+    .login-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .header-emoji {
+      font-size: 2.5rem;
+      display: block;
+      margin-bottom: 0.5rem;
     }
 
     h2 {
       text-align: center;
-      margin-bottom: 1.5rem;
+      margin: 0;
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: #6b4a7a;
+    }
+
+    .subtitle {
+      color: #9b8aa8;
+      font-size: 0.9rem;
+      margin-top: 0.25rem;
     }
 
     .form-group {
-      margin-bottom: 1rem;
+      margin-bottom: 1.25rem;
     }
 
     label {
       display: block;
-      margin-bottom: 0.25rem;
-      font-weight: 500;
+      margin-bottom: 0.4rem;
+      font-weight: 600;
+      color: #6b4a7a;
+      font-size: 0.9rem;
     }
 
     input {
       width: 100%;
-      padding: 0.5rem;
-      border: 1px solid #ccc;
-      border-radius: 4px;
+      padding: 0.7rem 1rem;
+      border: 2px solid #E8D5F5;
+      border-radius: 12px;
       font-size: 1rem;
+      font-family: 'Nunito', sans-serif;
       box-sizing: border-box;
+      background: #FFFEF2;
+      color: #5a4a6b;
+      transition: all 0.25s ease;
     }
 
     input:focus {
       outline: none;
-      border-color: #4a90d9;
-      box-shadow: 0 0 0 2px rgba(74, 144, 217, 0.2);
+      border-color: #FFB7C5;
+      box-shadow: 0 0 0 3px rgba(255, 183, 197, 0.2);
+      background: #fff;
+    }
+
+    input::placeholder {
+      color: #c4b5d0;
+    }
+
+    .password-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .password-wrapper input {
+      padding-right: 2.5rem;
+    }
+
+    .toggle-password {
+      position: absolute;
+      right: 10px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 1.1rem;
+      padding: 0;
+      line-height: 1;
     }
 
     .error-message {
-      color: #d32f2f;
-      background-color: #fdecea;
-      border: 1px solid #f5c6cb;
-      border-radius: 4px;
-      padding: 0.75rem;
+      color: #d4708a;
+      background-color: #FFF0F5;
+      border: 1px solid #FFB7C5;
+      border-radius: 12px;
+      padding: 0.75rem 1rem;
       margin-bottom: 1rem;
       font-size: 0.875rem;
+      font-weight: 500;
     }
 
     .submit-btn {
       width: 100%;
-      padding: 0.75rem;
-      background-color: #4a90d9;
+      padding: 0.8rem;
+      background: linear-gradient(135deg, #FFB7C5 0%, #FF8FA3 100%);
       color: white;
       border: none;
-      border-radius: 4px;
+      border-radius: 14px;
       font-size: 1rem;
+      font-weight: 700;
+      font-family: 'Nunito', sans-serif;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 0.5rem;
+      box-shadow: 0 4px 15px rgba(255, 143, 163, 0.3);
+      transition: all 0.25s ease;
     }
 
     .submit-btn:hover:not(:disabled) {
-      background-color: #357abd;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(255, 143, 163, 0.4);
     }
 
     .submit-btn:disabled {
-      background-color: #a0c4e8;
+      background: linear-gradient(135deg, #E8D5F5 0%, #d4c4e3 100%);
       cursor: not-allowed;
+      box-shadow: none;
+      transform: none;
     }
 
     .spinner {
@@ -163,17 +237,19 @@ import { HttpErrorResponse } from '@angular/common/http';
 
     .register-link {
       text-align: center;
-      margin-top: 1rem;
-      font-size: 0.875rem;
+      margin-top: 1.5rem;
+      font-size: 0.9rem;
+      color: #9b8aa8;
     }
 
     .register-link a {
-      color: #4a90d9;
+      color: #e88ca5;
       text-decoration: none;
+      font-weight: 600;
     }
 
     .register-link a:hover {
-      text-decoration: underline;
+      color: #d4708a;
     }
   `]
 })
@@ -182,6 +258,7 @@ export class LoginComponent {
   password = new FormControl('', [Validators.maxLength(100)]);
   loading = false;
   errorMessage = '';
+  showPassword = false;
 
   constructor(
     private authService: AuthService,
@@ -195,7 +272,9 @@ export class LoginComponent {
   }
 
   onSubmit(): void {
+    console.log('onSubmit called');
     if (this.isSubmitDisabled()) {
+      console.log('Submit is disabled, returning');
       return;
     }
 

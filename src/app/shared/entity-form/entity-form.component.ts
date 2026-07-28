@@ -118,7 +118,8 @@ export interface EntityFormConfig {
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.5);
+      background: rgba(107, 74, 122, 0.3);
+      backdrop-filter: blur(4px);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -126,89 +127,122 @@ export interface EntityFormConfig {
     }
 
     .form-dialog {
-      background: white;
-      border-radius: 8px;
-      padding: 24px;
+      background: rgba(255, 255, 255, 0.97);
+      border-radius: 20px;
+      padding: 2rem;
       min-width: 400px;
       max-width: 500px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 8px 32px rgba(232, 213, 245, 0.3), 0 2px 8px rgba(255, 183, 197, 0.15);
+      border: 2px solid rgba(232, 213, 245, 0.3);
     }
 
     h2 {
-      margin: 0 0 16px 0;
-      font-size: 1.25rem;
+      margin: 0 0 1.25rem 0;
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: #6b4a7a;
+      text-align: center;
     }
 
     .form-field {
-      margin-bottom: 16px;
+      margin-bottom: 1.25rem;
     }
 
     label {
       display: block;
-      margin-bottom: 4px;
-      font-weight: 500;
+      margin-bottom: 0.4rem;
+      font-weight: 600;
       font-size: 0.875rem;
+      color: #6b4a7a;
     }
 
     input, select {
       width: 100%;
-      padding: 8px 12px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      font-size: 0.875rem;
+      padding: 0.65rem 1rem;
+      border: 2px solid #E8D5F5;
+      border-radius: 12px;
+      font-size: 0.9rem;
+      font-family: 'Nunito', sans-serif;
       box-sizing: border-box;
+      background: #FFFEF2;
+      color: #5a4a6b;
+      transition: all 0.25s ease;
     }
 
     input:focus, select:focus {
       outline: none;
-      border-color: #4f46e5;
-      box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.1);
+      border-color: #FFB7C5;
+      box-shadow: 0 0 0 3px rgba(255, 183, 197, 0.2);
+      background: #fff;
+    }
+
+    input::placeholder {
+      color: #c4b5d0;
+    }
+
+    select {
+      cursor: pointer;
     }
 
     .field-errors {
-      margin-top: 4px;
+      margin-top: 0.35rem;
     }
 
     .error-message {
       display: block;
-      color: #dc2626;
+      color: #d4708a;
       font-size: 0.75rem;
+      font-weight: 500;
     }
 
     .form-actions {
       display: flex;
-      gap: 8px;
+      gap: 10px;
       justify-content: flex-end;
-      margin-top: 20px;
+      margin-top: 1.5rem;
     }
 
     .btn-submit {
-      background: #4f46e5;
-      color: white;
+      background: linear-gradient(135deg, #B5EAD7 0%, #8fd4b8 100%);
+      color: #3a6b55;
       border: none;
-      padding: 8px 16px;
-      border-radius: 4px;
+      padding: 0.6rem 1.5rem;
+      border-radius: 12px;
       cursor: pointer;
-      font-size: 0.875rem;
+      font-size: 0.9rem;
+      font-weight: 700;
+      font-family: 'Nunito', sans-serif;
+      transition: all 0.25s ease;
+      box-shadow: 0 3px 10px rgba(181, 234, 215, 0.3);
+    }
+
+    .btn-submit:hover:not(:disabled) {
+      transform: translateY(-1px);
+      box-shadow: 0 5px 15px rgba(181, 234, 215, 0.4);
     }
 
     .btn-submit:disabled {
-      background: #9ca3af;
+      background: #e0e0e0;
+      color: #999;
       cursor: not-allowed;
+      box-shadow: none;
     }
 
     .btn-cancel {
-      background: #f3f4f6;
-      color: #374151;
-      border: 1px solid #d1d5db;
-      padding: 8px 16px;
-      border-radius: 4px;
+      background: rgba(232, 213, 245, 0.4);
+      color: #6b4a7a;
+      border: 2px solid #E8D5F5;
+      padding: 0.6rem 1.5rem;
+      border-radius: 12px;
       cursor: pointer;
-      font-size: 0.875rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      font-family: 'Nunito', sans-serif;
+      transition: all 0.25s ease;
     }
 
     .btn-cancel:hover {
-      background: #e5e7eb;
+      background: rgba(232, 213, 245, 0.6);
     }
   `]
 })
