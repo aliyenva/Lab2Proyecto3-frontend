@@ -42,8 +42,8 @@ import { HttpErrorResponse } from '@angular/common/http';
                 placeholder="Enter password"
                 autocomplete="current-password"
               />
-              <button type="button" class="toggle-password" (click)="showPassword = !showPassword">
-                {{ showPassword ? '🙈' : '👁️' }}
+              <button type="button" class="toggle-password" (click)="showPassword = !showPassword" aria-label="Toggle password visibility">
+                {{ showPassword ? 'Hide' : 'Show' }}
               </button>
             </div>
           </div>
@@ -174,9 +174,16 @@ import { HttpErrorResponse } from '@angular/common/http';
       background: none;
       border: none;
       cursor: pointer;
-      font-size: 1.1rem;
-      padding: 0;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #9b8aa8;
+      padding: 2px 6px;
       line-height: 1;
+      font-family: 'Nunito', sans-serif;
+    }
+
+    .toggle-password:hover {
+      color: #6b4a7a;
     }
 
     .error-message {
