@@ -18,7 +18,7 @@ import { HttpErrorResponse } from '@angular/common/http';
           <p class="subtitle">Sign in to your konbini</p>
         </div>
 
-        <form (ngSubmit)="onSubmit()">
+        <form (ngSubmit)="onSubmit()" (keydown.enter)="onSubmit()">
           <div class="form-group">
             <label for="username">Username</label>
             <input
