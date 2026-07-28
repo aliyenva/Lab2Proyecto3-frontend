@@ -55,8 +55,7 @@ import { HttpErrorResponse } from '@angular/common/http';
           }
 
           <button
-            type="button"
-            (click)="onSubmit()"
+            type="submit"
             [disabled]="isSubmitDisabled()"
             class="submit-btn"
           >
