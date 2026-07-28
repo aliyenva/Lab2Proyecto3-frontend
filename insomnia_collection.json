@@ -1,0 +1,200 @@
+{
+  "_type": "export",
+  "__export_format": 4,
+  "__export_date": "2026-06-16T00:00:00.000Z",
+  "__export_source": "insomnia.desktop.app:v2023.5.8",
+  "resources": [
+    {
+      "_id": "wrk_crud_backend",
+      "_type": "workspace",
+      "name": "CRUD Backend - Proyecto 3",
+      "description": "Colección de pruebas para el CRUD de Productos y Categorías"
+    },
+    {
+      "_id": "fld_auth",
+      "_type": "request_group",
+      "name": "Auth",
+      "parentId": "wrk_crud_backend"
+    },
+    {
+      "_id": "fld_categorias",
+      "_type": "request_group",
+      "name": "Categorías",
+      "parentId": "wrk_crud_backend"
+    },
+    {
+      "_id": "fld_productos",
+      "_type": "request_group",
+      "name": "Productos",
+      "parentId": "wrk_crud_backend"
+    },
+    {
+      "_id": "req_login_admin",
+      "_type": "request",
+      "name": "Login Admin (SUPER-ADMIN-ROLE)",
+      "method": "POST",
+      "url": "http://localhost:8080/api/auth/login",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"username\": \"admin\",\n  \"password\": \"admin123\"\n}"
+      },
+      "headers": [
+        { "name": "Content-Type", "value": "application/json" }
+      ],
+      "authentication": {},
+      "parentId": "fld_auth"
+    },
+    {
+      "_id": "req_login_user",
+      "_type": "request",
+      "name": "Login User (USER)",
+      "method": "POST",
+      "url": "http://localhost:8080/api/auth/login",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"username\": \"user\",\n  \"password\": \"user123\"\n}"
+      },
+      "headers": [
+        { "name": "Content-Type", "value": "application/json" }
+      ],
+      "authentication": {},
+      "parentId": "fld_auth"
+    },
+    {
+      "_id": "req_crear_categoria",
+      "_type": "request",
+      "name": "Registrar Categoría",
+      "method": "POST",
+      "url": "http://localhost:8080/api/categorias",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"nombre\": \"Electrónica\",\n  \"descripcion\": \"Productos electrónicos y tecnología\"\n}"
+      },
+      "headers": [
+        { "name": "Content-Type", "value": "application/json" }
+      ],
+      "authentication": {
+        "type": "bearer",
+        "token": "PEGAR_TOKEN_AQUI",
+        "prefix": "Bearer"
+      },
+      "parentId": "fld_categorias"
+    },
+    {
+      "_id": "req_listar_categorias",
+      "_type": "request",
+      "name": "Listar Categorías",
+      "method": "GET",
+      "url": "http://localhost:8080/api/categorias",
+      "headers": [],
+      "authentication": {
+        "type": "bearer",
+        "token": "PEGAR_TOKEN_AQUI",
+        "prefix": "Bearer"
+      },
+      "parentId": "fld_categorias"
+    },
+    {
+      "_id": "req_actualizar_categoria",
+      "_type": "request",
+      "name": "Actualizar Categoría",
+      "method": "PUT",
+      "url": "http://localhost:8080/api/categorias/1",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"nombre\": \"Electrónica Actualizada\",\n  \"descripcion\": \"Descripción actualizada\"\n}"
+      },
+      "headers": [
+        { "name": "Content-Type", "value": "application/json" }
+      ],
+      "authentication": {
+        "type": "bearer",
+        "token": "PEGAR_TOKEN_AQUI",
+        "prefix": "Bearer"
+      },
+      "parentId": "fld_categorias"
+    },
+    {
+      "_id": "req_borrar_categoria",
+      "_type": "request",
+      "name": "Borrar Categoría",
+      "method": "DELETE",
+      "url": "http://localhost:8080/api/categorias/1",
+      "headers": [],
+      "authentication": {
+        "type": "bearer",
+        "token": "PEGAR_TOKEN_AQUI",
+        "prefix": "Bearer"
+      },
+      "parentId": "fld_categorias"
+    },
+    {
+      "_id": "req_crear_producto",
+      "_type": "request",
+      "name": "Registrar Producto",
+      "method": "POST",
+      "url": "http://localhost:8080/api/productos",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"nombre\": \"Laptop HP\",\n  \"descripcion\": \"Laptop HP Pavilion 15\",\n  \"precio\": 899.99,\n  \"cantidadStock\": 50,\n  \"categoria\": {\n    \"id\": 1\n  }\n}"
+      },
+      "headers": [
+        { "name": "Content-Type", "value": "application/json" }
+      ],
+      "authentication": {
+        "type": "bearer",
+        "token": "PEGAR_TOKEN_AQUI",
+        "prefix": "Bearer"
+      },
+      "parentId": "fld_productos"
+    },
+    {
+      "_id": "req_listar_productos",
+      "_type": "request",
+      "name": "Listar Productos",
+      "method": "GET",
+      "url": "http://localhost:8080/api/productos",
+      "headers": [],
+      "authentication": {
+        "type": "bearer",
+        "token": "PEGAR_TOKEN_AQUI",
+        "prefix": "Bearer"
+      },
+      "parentId": "fld_productos"
+    },
+    {
+      "_id": "req_actualizar_producto",
+      "_type": "request",
+      "name": "Actualizar Producto",
+      "method": "PUT",
+      "url": "http://localhost:8080/api/productos/1",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"nombre\": \"Laptop HP Actualizada\",\n  \"descripcion\": \"Laptop HP Pavilion 15 - 2024\",\n  \"precio\": 949.99,\n  \"cantidadStock\": 30,\n  \"categoria\": {\n    \"id\": 1\n  }\n}"
+      },
+      "headers": [
+        { "name": "Content-Type", "value": "application/json" }
+      ],
+      "authentication": {
+        "type": "bearer",
+        "token": "PEGAR_TOKEN_AQUI",
+        "prefix": "Bearer"
+      },
+      "parentId": "fld_productos"
+    },
+    {
+      "_id": "req_borrar_producto",
+      "_type": "request",
+      "name": "Borrar Producto",
+      "method": "DELETE",
+      "url": "http://localhost:8080/api/productos/1",
+      "headers": [],
+      "authentication": {
+        "type": "bearer",
+        "token": "PEGAR_TOKEN_AQUI",
+        "prefix": "Bearer"
+      },
+      "parentId": "fld_productos"
+    }
+  ]
+}
