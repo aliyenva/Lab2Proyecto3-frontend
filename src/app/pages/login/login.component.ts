@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule, FormControl, Validators } from '@angular/forms';
+import { ReactiveFormsModule, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -18,13 +18,13 @@ import { HttpErrorResponse } from '@angular/common/http';
           <p class="subtitle">Sign in to your konbini</p>
         </div>
 
-        <form (ngSubmit)="onSubmit()" (keydown.enter)="onSubmit()">
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
           <div class="form-group">
             <label for="username">Username</label>
             <input
               id="username"
               type="text"
-              [formControl]="username"
+              formControlName="username"
               [maxLength]="50"
               placeholder="Enter username"
               autocomplete="username"
@@ -37,7 +37,7 @@ import { HttpErrorResponse } from '@angular/common/http';
               <input
                 id="password"
                 [type]="showPassword ? 'text' : 'password'"
-                [formControl]="password"
+                formControlName="password"
                 [maxLength]="100"
                 placeholder="Enter password"
                 autocomplete="current-password"
@@ -260,8 +260,10 @@ import { HttpErrorResponse } from '@angular/common/http';
   `]
 })
 export class LoginComponent {
-  username = new FormControl('', [Validators.maxLength(50)]);
-  password = new FormControl('', [Validators.maxLength(100)]);
+  loginForm = new FormGroup({
+    username: new FormControl('', [Validators.maxLength(50)]),
+    password: new FormControl('', [Validators.maxLength(100)])
+  });
   loading = false;
   errorMessage = '';
   showPassword = false;
@@ -272,8 +274,8 @@ export class LoginComponent {
   ) {}
 
   isSubmitDisabled(): boolean {
-    const usernameValue = this.username.value?.trim() || '';
-    const passwordValue = this.password.value?.trim() || '';
+    const usernameValue = this.loginForm.get('username')?.value?.trim() || '';
+    const passwordValue = this.loginForm.get('password')?.value?.trim() || '';
     return usernameValue.length === 0 || passwordValue.length === 0 || this.loading;
   }
 
@@ -285,8 +287,8 @@ export class LoginComponent {
     this.loading = true;
     this.errorMessage = '';
 
-    const usernameValue = this.username.value!.trim();
-    const passwordValue = this.password.value!.trim();
+    const usernameValue = this.loginForm.get('username')!.value!.trim();
+    const passwordValue = this.loginForm.get('password')!.value!.trim();
 
     this.authService.login(usernameValue, passwordValue).subscribe({
       next: () => {
